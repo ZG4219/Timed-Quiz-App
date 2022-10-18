@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;300&family=Fira+Sans:wght@100;200&family=Handlee&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Timed Quiz App</title>
+</head>
+
+<body>
+    <button class="start">Start</button>
+
+    <div id="timer">Timer</div>
+
+    <!-- quiz-container -->
+    <div id="quiz-container">
+        <!-- question container -->
+        <div class="questions">
+            <h2 id="question"></h2>
+            <ol type="A">
+                <li class="option"><span id="option0" onclick="calcScore(this)"></span></li>
+                <li class="option"><span id="option1" onclick="calcScore(this)"></span></li>
+                <li class="option"><span id="option2" onclick="calcScore(this)"></span></li>
+                <li class="option"><span id="option3" onclick="calcScore(this)"></span></li>
+            </ol>
+            <h4 id="stat"></h4>
+        </div>
+
+        <div class="buttons">
+            <button type="button" class="next">Next</button>
+        </div>
+    </div>    
+
+        <!-- scoreboard section -->
+    <div id="scoreboard">
+        <h2 id="score-title">Your Score</h2>
+        <h2 id="score"></h2>
+        <button type="button" id="score-btn" onclick="backToQuiz()">Back to Quiz</button>
+        <button type="button" id="check-answer" onclick="checkAnswer()">Check Answers</button>
+        <button type="button" id="save-initial" onclick="saveInitials()">Save Initials</button>
+    </div>
+
+    <!-- answers section -->
+    <div id="answerBank">
+        <h2>Answers :</h2>
+        <ol type="1" id="answers">
+
+        </ol>
+        <button type="button" id="score-btn" onclick="backToQuiz()">Back to Quiz</button>
+    </div>
+
+
+<script src="script.js"></script>
+</html>
