@@ -38,6 +38,10 @@ body{
     cursor: pointer;
     border-radius: 1rem;
 }
+.displayNone {
+    display: none;
+    
+}
 #question{
     margin-bottom: 1rem;
 }

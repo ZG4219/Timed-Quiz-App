@@ -58,7 +58,23 @@ function displayQuestion(){
 }
 
 //function to calculate scores
-function calcScore(e){
+function calcScore(){
+    
+    if (i<4) {
+        console.log('i='+i)
+        setTimeout(nextQuestion,300);
+
+    }
+    else{
+        console.log('else i='+i)
+        clearInterval(interval);
+        points.innerHTML= score+ '/'+ questionBank.length;
+        quizContainer.style.display= 'none';
+        scoreboard.style.display= 'block'
+    }
+    
+}
+var changeColor = function(e){
     if(e.innerHTML===questionBank[i].answer && score<questionBank.length)
     {
         score= score+1;
@@ -67,26 +83,34 @@ function calcScore(e){
     else{
         document.getElementById(e.id).style.background= 'red';
     }
-    setTimeout(nextQuestion,300);
 }
-
-
-var timer = 30;
-var startBtn = document.querySelector('.start')
-startBtn.addEventListener('click', function(){
-
-
-var interval = setInterval(function(){
+var timerDisplay = function(){
     document.getElementById('timer').innerHTML=timer;
     timer--;
     if (timer === 0){
       clearInterval(interval);
       document.getElementById('timer').innerHTML='Time is up!';
-      
-    }
-   
-  }, 1000);
-})
+       
+  }
+}
+var interval;
+var startQuiz = function(){
+    console.log ('startQuiz');
+    interval = setInterval(timerDisplay, 1000);
+
+    //onclick="calcScore(this)
+    option0.addEventListener('click', calcScore);
+    option1.addEventListener('click', calcScore);
+    option2.addEventListener('click', calcScore);
+    option3.addEventListener('click', calcScore);
+  
+quizContainer.style.display= 'block';
+}
+
+var timer = 30;
+var startBtn = document.querySelector('.start')
+startBtn.addEventListener('click', startQuiz);
+
 //function to display next question
 function nextQuestion(){
     if(i<questionBank.length-1)
@@ -95,9 +119,9 @@ function nextQuestion(){
         displayQuestion();
     }
     else{
-        points.innerHTML= score+ '/'+ questionBank.length;
-        quizContainer.style.display= 'none';
-        scoreboard.style.display= 'block'
+        // points.innerHTML= score+ '/'+ questionBank.length;
+        // quizContainer.style.display= 'none';
+        // scoreboard.style.display= 'block'
     }
 
 }
